@@ -1,6 +1,7 @@
 export type Field = { key: string; label: string; min: number; max: number; step: number; value: number; suffix?: string };
+type Vals = { [k: string]: number };
 export type Result = { label: string; value: number; highlight?: boolean };
-export type Calculator = { slug: string; name: string; blurb: string; fields: Field[]; compute: (v: Record<string, number>) => Result[] };
+export type Calculator = { slug: string; name: string; blurb: string; fields: Field[]; compute: (v: Vals) => Result[] };
 
 const sipFV = (m: number, r: number, y: number) => {
   const i = r / 1200, n = y * 12;
