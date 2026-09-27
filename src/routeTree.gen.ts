@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as VideosRouteImport } from './routes/videos'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CalculatorsIndexRouteImport } from './routes/calculators.index'
+import { Route as CalculatorsSlugRouteImport } from './routes/calculators.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideosRoute = VideosRouteImport.update({
+  id: '/videos',
+  path: '/videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalculatorsIndexRoute = CalculatorsIndexRouteImport.update({
+  id: '/calculators/',
+  path: '/calculators/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalculatorsSlugRoute = CalculatorsSlugRouteImport.update({
+  id: '/calculators/$slug',
+  path: '/calculators/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/videos': typeof VideosRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/calculators/$slug': typeof CalculatorsSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/calculators/': typeof CalculatorsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/videos': typeof VideosRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/calculators/$slug': typeof CalculatorsSlugRoute
+  '/blog': typeof BlogIndexRoute
+  '/calculators': typeof CalculatorsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/videos': typeof VideosRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/calculators/$slug': typeof CalculatorsSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/calculators/': typeof CalculatorsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/videos'
+    | '/blog/$slug'
+    | '/calculators/$slug'
+    | '/blog/'
+    | '/calculators/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/videos'
+    | '/blog/$slug'
+    | '/calculators/$slug'
+    | '/blog'
+    | '/calculators'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/videos'
+    | '/blog/$slug'
+    | '/calculators/$slug'
+    | '/blog/'
+    | '/calculators/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  VideosRoute: typeof VideosRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  CalculatorsSlugRoute: typeof CalculatorsSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  CalculatorsIndexRoute: typeof CalculatorsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/videos': {
+      id: '/videos'
+      path: '/videos'
+      fullPath: '/videos'
+      preLoaderRoute: typeof VideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calculators/': {
+      id: '/calculators/'
+      path: '/calculators'
+      fullPath: '/calculators/'
+      preLoaderRoute: typeof CalculatorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calculators/$slug': {
+      id: '/calculators/$slug'
+      path: '/calculators/$slug'
+      fullPath: '/calculators/$slug'
+      preLoaderRoute: typeof CalculatorsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  VideosRoute: VideosRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  CalculatorsSlugRoute: CalculatorsSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  CalculatorsIndexRoute: CalculatorsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
