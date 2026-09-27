@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import portrait from "@/assets/portrait.jpg";
+import portraitAsset from "@/assets/portrait.jpg.asset.json";
+const portrait = portraitAsset.url;
 import { PageHeader } from "@/components/SiteChrome";
 import { SITE } from "@/lib/site";
 
