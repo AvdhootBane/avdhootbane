@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calculator, BookOpen, PlayCircle } from "lucide-react";
-import portrait from "@/assets/portrait.jpg";
+import portraitAsset from "@/assets/portrait.jpg.asset.json";
+const portrait = portraitAsset.url;
 import { SITE, POSTS } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
