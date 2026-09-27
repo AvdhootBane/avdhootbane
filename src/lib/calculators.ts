@@ -1,5 +1,6 @@
 export type Field = { key: string; label: string; min: number; max: number; step: number; value: number; suffix?: string };
-type Vals = { [k: string]: number };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Vals = any;
 export type Result = { label: string; value: number; highlight?: boolean };
 export type Calculator = { slug: string; name: string; blurb: string; fields: Field[]; compute: (v: Vals) => Result[] };
 
